@@ -48,7 +48,7 @@ export default function Header() {
     { name: 'About', href: '/about' },
     { name: 'Classes', href: '/classes' },
     { name: 'Gallery', href: '/gallery' },
-    { name: 'Register', href: '/registration' },
+    { name: 'Result', href: '/result' },
     { name: 'Contact', href: '/contact' },
   ];
 

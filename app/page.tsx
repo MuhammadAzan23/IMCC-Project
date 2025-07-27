@@ -132,15 +132,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-8 h-8 flex items-center justify-center" style={{ color: '#001f4d' }}>
-            <i className="ri-arrow-down-line text-3xl"></i>
-          </div>
-        </motion.div>
+      
       </section>
 
       {/* Scrolling Text Section */}
