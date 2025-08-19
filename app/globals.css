@@ -2,3 +2,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bannerDiv {
+  background-image: url('/images/logo.jpg');
+  background-size: cover; /* scales image to cover entire div */
+  background-position: center; /* centers image */
+  background-repeat: no-repeat; /* prevents tiling */
+  /* padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}

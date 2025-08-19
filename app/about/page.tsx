@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedText from '@/components/ui/AnimatedText';
 import Link from 'next/link';
+import sirAshrafPic from '../../images/sir_ashraf.jpg';
 
 export default function About() {
   const values = [
@@ -35,7 +36,7 @@ export default function About() {
       name: 'Dr. Muhammad Ahmed',
       subject: 'Physics & Mathematics',
       qualification: 'PhD Physics, 15 years experience',
-      image: 'https://readdy.ai/api/search-image?query=Pakistani%20male%20teacher%20in%20professional%20attire%20standing%20in%20modern%20classroom%2C%20confident%20pose%2C%20educational%20background%2C%20clean%20studio%20lighting&width=400&height=500&seq=teacher1&orientation=portrait'
+      image: sirAshrafPic.src
     },
     {
       name: 'Prof. Fatima Shah',

@@ -1,18 +1,18 @@
-
 'use client';
 
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
+import Link from 'next/link';
+import logo from '../images/logo.jpg';
+import Header from '@/components/Header';   
 import Footer from '@/components/Footer';
-import AnimatedText from '@/components/ui/AnimatedText';
 import GlowText from '@/components/ui/GlowText';
 import ScrollingText from '@/components/ui/ScrollingText';
-import Link from 'next/link';
+import AnimatedText from '@/components/ui/AnimatedText';
 
 export default function Home() {
   const classCategories = [
     'Class 9th • Class 10th • Class 11th • Class 12th',
-    'Pre-Medical • Pre-Engineering • Commerce • Arts',
+    'Pre-Medical • Pre-Engineering • Computer Science • Commerce',
     'Expert Teachers • Modern Facilities • Proven Results'
   ];
 
@@ -62,78 +62,77 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* Header as it was */}
       <Header />
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/10 via-transparent to-blue-950/10"></div>
+     {/* Hero Section */}
+<section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
+  {/* Background Image */}
+  <img
+    src={logo.src}
+    alt="IMCC Logo"
+    className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
+  />
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-white/10"></div>
 
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-12"
-          >
+  {/* Content */}
+  <div className="relative z-10 container mx-auto px-4 text-center">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="mb-12"
+    >
+      {/* Responsive Heading */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="text-3xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-tight"
+        style={{ color: '#001f4d' }}
+      >
+        Welcome to I M Collegiate Coaching Centre
+      </motion.h1>
 
-            {/* Main Heading */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-4"
-            >
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight" style={{ color: '#001f4d' }}>
-                Welcome to<br />
-                <span className="text-4xl md:text-5xl">I M Collegiate</span>
-              </h1>
-              <h2 className="text-3xl md:text-4xl font-semibold" style={{ color: '#001f4d' }}>
-                Coaching Centre
-              </h2>
-              <div className="flex items-center justify-center gap-2 text-lg md:text-xl text-gray-600 font-medium mt-6">
-                <i className="ri-map-pin-line text-2xl" style={{ color: '#001f4d' }}></i>
-                <span>Karachi, Pakistan</span>
-              </div>
-            </motion.div>
-          </motion.div>
+      {/* Location */}
+      <div className="flex items-center justify-center gap-2 text-base md:text-lg lg:text-xl text-gray-600 font-medium mt-4 md:mt-6">
+        <i className="ri-map-pin-line text-xl md:text-2xl" style={{ color: '#001f4d' }}></i>
+        <span>Karachi, Pakistan</span>
+      </div>
+    </motion.div>
 
-          <GlowText text="Learn it. Live it. Pass it on." className="mb-12" />
+    <GlowText text="Learn it. Live it. Pass it on." className="mb-8 md:mb-12" />
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="space-y-4 md:space-y-0 md:space-x-4 md:flex md:justify-center"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/registration"
-                className="inline-block text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:shadow-xl whitespace-nowrap"
-                style={{ backgroundColor: '#001f4d' }}
-              >
-                Register Now
-              </Link>
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href="/classes"
-                className="inline-block border-2 hover:bg-blue-50 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:shadow-lg whitespace-nowrap"
-                style={{ borderColor: '#001f4d', color: '#001f4d' }}
-              >
-                View Classes
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-
-      
-      </section>
+    {/* Buttons */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.7 }}
+      className="space-y-3 md:space-y-0 md:space-x-4 md:flex md:justify-center"
+    >
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link
+          href="/registration"
+          className="inline-block text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 transform hover:shadow-xl whitespace-nowrap"
+          style={{ backgroundColor: '#001f4d' }}
+        >
+          Register Now
+        </Link>
+      </motion.div>
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link
+          href="/classes"
+          className="inline-block border-2 hover:bg-blue-50 px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold text-sm md:text-base transition-all duration-300 transform hover:shadow-lg whitespace-nowrap"
+          style={{ borderColor: '#001f4d', color: '#001f4d' }}
+        >
+          View Classes
+        </Link>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
 
       {/* Scrolling Text Section */}
       <section className="py-16 bg-gradient-to-r from-sky-50 to-blue-50">
@@ -211,10 +210,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { grade: 'Class 9th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'English'] },
-              { grade: 'Class 10th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'English'] },
-              { grade: 'Class 11th', subjects: ['Pre-Medical', 'Pre-Engineering', 'Commerce', 'Arts'] },
-              { grade: 'Class 12th', subjects: ['Pre-Medical', 'Pre-Engineering', 'Commerce', 'Arts'] }
+              { grade: 'Class 9th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'Computer'] },
+              { grade: 'Class 10th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology','Computer'] },
+              { grade: 'Class 11th', subjects: ['Pre-Medical', 'Pre-Engineering', 'Computer Science', 'Commerce'] },
+              { grade: 'Class 12th', subjects: ['Pre-Medical', 'Pre-Engineering', 'Computer Science', 'Commerce'] }
             ].map((classItem, index) => (
               <motion.div
                 key={index}
