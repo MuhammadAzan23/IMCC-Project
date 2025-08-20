@@ -11,6 +11,7 @@ import sirArifPic from '../../images/sir_arif.JPG';
 import sirKazimPic from '../../images/sir_kazim.jpg';
 import sirMoizPic from '../../images/sir_moiz.jpg';
 import sirAslamPic from '../../images/sir_aslam.jpg';
+import sirAzanPic from '../../images/sir_azan.jpg';
 
 export default function About() {
   const values = [
@@ -72,6 +73,12 @@ export default function About() {
       subject: 'Commerce & Economics',
       qualification: 'MBA Finance, 9 years experience',
       image: sirAslamPic.src
+    },
+    {
+      name: 'Sir Azan',
+      subject: 'Biology & Chemistry',
+      qualification: 'M.Phil Biology, 7 years experience',
+      image: sirAzanPic.src
     }
   ];
 
@@ -207,7 +214,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teachers.map((teacher, index) => (
               <motion.div
                 key={index}
