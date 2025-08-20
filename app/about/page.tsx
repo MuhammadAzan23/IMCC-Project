@@ -7,7 +7,7 @@ import AnimatedText from '@/components/ui/AnimatedText';
 import Link from 'next/link';
 import sirAshrafPic from '../../images/sir_ashraf.jpg';
 import sirAhtishamPic from '../../images/sir_ahtisham.jpg';
-import sirArifPic from '../../images/sir_arif.JPG';
+import sirArifPic from '../../images/sir_arif.jpg';
 import sirKazimPic from '../../images/sir_kazim.jpg';
 import sirMoizPic from '../../images/sir_moiz.jpg';
 import sirAslamPic from '../../images/sir_aslam.jpg';
