@@ -6,6 +6,11 @@ import Footer from '@/components/Footer';
 import AnimatedText from '@/components/ui/AnimatedText';
 import Link from 'next/link';
 import sirAshrafPic from '../../images/sir_ashraf.jpg';
+import sirAhtishamPic from '../../images/sir_ahtisham.jpg';
+import sirArifPic from '../../images/sir_arif.JPG';
+import sirKazimPic from '../../images/sir_kazim.jpg';
+import sirMoizPic from '../../images/sir_moiz.jpg';
+import sirAslamPic from '../../images/sir_aslam.jpg';
 
 export default function About() {
   const values = [
@@ -33,28 +38,40 @@ export default function About() {
 
   const teachers = [
     {
-      name: 'Dr. Muhammad Ahmed',
+      name: 'Sir Ashraf',
       subject: 'Physics & Mathematics',
       qualification: 'PhD Physics, 15 years experience',
       image: sirAshrafPic.src
     },
     {
-      name: 'Prof. Fatima Shah',
+      name: 'Sir Ahtisham',
       subject: 'Chemistry & Biology',
-      qualification: 'M.Phil Chemistry, 12 years experience',
-      image: 'https://readdy.ai/api/search-image?query=Pakistani%20female%20teacher%20wearing%20hijab%20in%20professional%20attire%2C%20standing%20in%20modern%20classroom%2C%20confident%20pose%2C%20educational%20background%2C%20clean%20studio%20lighting&width=400&height=500&seq=teacher2&orientation=portrait'
+      qualification: 'M.Phil Chemistry, 10 years experience',
+      image: sirAhtishamPic.src
     },
     {
-      name: 'Mr. Ali Hassan',
+      name: 'Sir Arif',
       subject: 'English & Urdu',
-      qualification: 'MA English Literature, 10 years experience',
-      image: 'https://readdy.ai/api/search-image?query=Pakistani%20male%20teacher%20in%20professional%20suit%20standing%20in%20modern%20classroom%2C%20confident%20pose%2C%20books%20in%20background%2C%20clean%20studio%20lighting&width=400&height=500&seq=teacher3&orientation=portrait'
+      qualification: 'MA English Literature, 8 years experience',
+      image: sirArifPic.src
     },
     {
-      name: 'Ms. Ayesha Khan',
+      name: 'Sir Kazim',
+      subject: 'Mathematics & Physics',
+      qualification: 'MS Mathematics, 12 years experience',
+      image: sirKazimPic.src
+    },
+    {
+      name: 'Sir Moiz',
+      subject: 'Computer Science',
+      qualification: 'BS Computer Science, 6 years experience',
+      image: sirMoizPic.src
+    },
+    {
+      name: 'Sir Aslam',
       subject: 'Commerce & Economics',
-      qualification: 'MBA Finance, 8 years experience',
-      image: 'https://readdy.ai/api/search-image?query=Pakistani%20female%20teacher%20in%20professional%20attire%20standing%20in%20modern%20classroom%2C%20confident%20pose%2C%20educational%20background%2C%20clean%20studio%20lighting&width=400&height=500&seq=teacher4&orientation=portrait'
+      qualification: 'MBA Finance, 9 years experience',
+      image: sirAslamPic.src
     }
   ];
 
@@ -191,6 +208,7 @@ export default function About() {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teachers.map((teacher, index) => (
               <motion.div
                 key={index}
