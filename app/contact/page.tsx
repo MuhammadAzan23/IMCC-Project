@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import logo from '../../images/logo.jpg';
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -138,6 +140,17 @@ export default function Contact() {
       
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
+      
+                  {/* Background Image */}
+                  <img
+                    src={logo.src}
+                    alt="IMCC Logo"
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
+                    aria-hidden="true"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-white/10" />
+        
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950/10 via-transparent to-blue-950/10"></div>
         
         <div className="relative z-10 container mx-auto px-4 text-center">
@@ -154,11 +167,12 @@ export default function Contact() {
               className="space-y-4 mb-12"
             >
               <h1 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#001f4d' }}>
-                Contact<br />
-                <span className="text-3xl md:text-4xl">I M Collegiate</span>
+                Get in Touch with <br />
+                <span className="text-3xl md:text-4xl">I M Collegiate Coaching Centre</span>
+                
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                Get in touch with us for admissions, inquiries, or any questions
+                For admissions, inquiries, or any questions
               </p>
             </motion.div>
           </motion.div>

@@ -11,6 +11,8 @@ import sirArifPic from '../../images/sir_arif.JPG';
 import sirKazimPic from '../../images/sir_kazim.jpg';
 import sirMoizPic from '../../images/sir_moiz.jpg';
 import sirAslamPic from '../../images/sir_aslam.jpg';
+import sirAzanPic from '../../images/sir_azan.jpg';
+import logo from '../../images/logo.jpg';
 
 export default function About() {
   const values = [
@@ -39,39 +41,45 @@ export default function About() {
   const teachers = [
     {
       name: 'Sir Ashraf',
-      subject: 'Physics & Mathematics',
-      qualification: 'PhD Physics, 15 years experience',
+      subject: 'Chemistry & Accounting',
+      qualification: 'PhD Chemistry, 15 years experience',
       image: sirAshrafPic.src
     },
     {
+      name: 'Sir Arif',
+      subject: 'Mathematics  ',
+      qualification: 'M.Phil Electronics Engineering, 8 years experience',
+      image: sirArifPic.src
+    },
+     {
+      name: 'Sir Aslam',
+      subject: 'Urdu & pakistan Studies',
+      qualification: 'M.Phil Urdu, 6 years experience',
+      image: sirAslamPic.src
+    },
+    {
       name: 'Sir Ahtisham',
-      subject: 'Chemistry & Biology',
-      qualification: 'M.Phil Chemistry, 10 years experience',
+      subject: 'Physics ',
+      qualification: 'M.Phil Physics, 4 years experience',
       image: sirAhtishamPic.src
     },
     {
-      name: 'Sir Arif',
-      subject: 'English & Urdu',
-      qualification: 'MA English Literature, 8 years experience',
-      image: sirArifPic.src
-    },
-    {
       name: 'Sir Kazim',
-      subject: 'Mathematics & Physics',
-      qualification: 'MS Mathematics, 12 years experience',
+      subject: 'Biology',
+      qualification: 'BS Pharmacy, 4 years experience',
       image: sirKazimPic.src
     },
     {
       name: 'Sir Moiz',
-      subject: 'Computer Science',
-      qualification: 'BS Computer Science, 6 years experience',
+      subject: 'English',
+      qualification: 'BS English, 4 years experience',
       image: sirMoizPic.src
     },
     {
-      name: 'Sir Aslam',
-      subject: 'Commerce & Economics',
-      qualification: 'MBA Finance, 9 years experience',
-      image: sirAslamPic.src
+      name: 'Sir Azan',
+      subject: 'Computer Science',
+      qualification: 'BS Computer Science, 2 years experience',
+      image: sirAzanPic.src
     }
   ];
 
@@ -82,7 +90,16 @@ export default function About() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950/10 via-transparent to-blue-950/10"></div>
-        
+    
+          {/* Background Image */}
+          <img
+            src={logo.src}
+            alt="IMCC Logo"
+            className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
+            aria-hidden="true"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-white/10" />
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -95,10 +112,15 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-4"
             >
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight" style={{ color: '#001f4d' }}>
-                About<br />
-                <span className="text-4xl md:text-5xl">I M Collegiate</span>
-              </h1>
+             <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-tight"
+                style={{ color: '#001f4d' }}
+              >
+                About I M Collegiate Coaching Centre
+              </motion.h1> <br />
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
                 Empowering students with quality education and modern teaching methods since our establishment in Karachi.
               </p>
@@ -207,7 +229,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teachers.map((teacher, index) => (
               <motion.div
                 key={index}
@@ -247,9 +269,9 @@ export default function About() {
         <div className="relative z-10 container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: '500+', label: 'Students Enrolled' },
-              { number: '15+', label: 'Expert Teachers' },
-              { number: '10+', label: 'Years of Excellence' },
+              { number: '15000+', label: 'Students Enrolled' },
+              { number: '10+', label: 'Expert Teachers' },
+              { number: '15+', label: 'Years of Excellence' },
               { number: '95%', label: 'Success Rate' }
             ].map((stat, index) => (
               <motion.div
