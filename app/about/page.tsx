@@ -49,7 +49,7 @@ export default function About() {
       name: 'Sir Arif',
       subject: 'Mathematics  ',
       qualification: 'M.Phil Electronics Engineering, 8 years experience',
-      image: "/images/sir_arif.jpg"
+      image: "/images/sir_arif.JPG"
     },
      {
       name: 'Sir Aslam',
