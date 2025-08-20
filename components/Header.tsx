@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -27,6 +27,59 @@ const Header = memo(() => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Memoize theme colors to avoid recalculation
+  const themeColors = useMemo(() => ({
+    headerBg: isScrolled
+      ? isDarkMode
+        ? 'rgba(17, 24, 39, 0.95)'
+        : 'rgba(255, 255, 255, 0.95)'
+      : isDarkMode
+        ? 'rgba(17, 24, 39, 1)'
+        : '#001f4d',
+    navText: isScrolled
+      ? isDarkMode
+        ? 'text-gray-300 hover:text-white'
+        : 'text-gray-700 hover:text-blue-600'
+      : 'text-white hover:text-blue-200',
+    navUnderline: isScrolled
+      ? isDarkMode
+        ? 'bg-white'
+        : 'bg-blue-600'
+      : 'bg-blue-200',
+    toggleBg: isScrolled
+      ? isDarkMode
+        ? 'bg-gray-700 hover:bg-gray-600'
+        : 'bg-gray-100 hover:bg-gray-200'
+      : isDarkMode
+        ? 'bg-gray-700 hover:bg-gray-600'
+        : 'bg-white/20 hover:bg-white/30',
+    toggleIcon: isScrolled
+      ? isDarkMode
+        ? 'text-gray-300'
+        : 'text-gray-700'
+      : isDarkMode
+        ? 'text-gray-300'
+        : 'text-white',
+    registerBtn: isScrolled
+      ? isDarkMode
+        ? 'bg-blue-600 hover:bg-blue-700 text-white'
+        : 'bg-blue-600 hover:bg-blue-700 text-white'
+      : isDarkMode
+        ? 'bg-blue-600 hover:bg-blue-700 text-white'
+        : 'bg-white text-blue-950 hover:bg-blue-50',
+    menuToggle: isScrolled
+      ? isDarkMode
+        ? 'hover:bg-gray-700 text-gray-300'
+        : 'hover:bg-gray-100 text-gray-700'
+      : isDarkMode
+        ? 'hover:bg-gray-700 text-gray-300'
+        : 'hover:bg-white/20 text-white',
+    mobileBg: isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+    mobileLink: isDarkMode
+      ? 'text-gray-300 hover:text-white hover:bg-gray-700'
+      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+  }), [isScrolled, isDarkMode]);
+
   // Handle scroll with debounce
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
@@ -48,36 +101,32 @@ const Header = memo(() => {
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
 
     setIsDarkMode(isDark);
-    document.documentElement.classList.toggle('dark', isDark);
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.toggle('dark', isDark);
+    }
   }, []);
 
   // Toggle dark mode
   const toggleDarkMode = useCallback(() => {
     setIsDarkMode((prev) => {
       const newDarkMode = !prev;
-      document.documentElement.classList.toggle('dark', newDarkMode);
-      localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+      if (typeof document !== 'undefined') {
+        document.documentElement.classList.toggle('dark', newDarkMode);
+      }
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', newDarkMode ? 'dark' : 'light');
+      }
       return newDarkMode;
     });
   }, []);
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
-      style={{
-        backgroundColor: isScrolled
-          ? isDarkMode
-            ? 'rgba(17, 24, 39, 0.95)'
-            : 'rgba(255, 255, 255, 0.95)'
-          : '#001f4d',
-      }}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md"
+      style={{ backgroundColor: themeColors.headerBg }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -112,25 +161,11 @@ const Header = memo(() => {
               <motion.div key={item.name} whileHover={{ scale: 1.05 }}>
                 <Link
                   href={item.href}
-                  className={`font-medium transition-all duration-300 relative group ${
-                    isScrolled
-                      ? isDarkMode
-                        ? 'text-gray-300 hover:text-sky-400'
-                        : 'text-gray-700 hover:text-sky-600'
-                      : 'text-white hover:text-sky-200'
-                  }`}
+                  className={`font-medium transition-all duration-300 relative group ${themeColors.navText}`}
                   aria-label={`Navigate to ${item.name} page`}
                 >
                   {item.name}
-                  <span
-                    className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                      isScrolled
-                        ? isDarkMode
-                          ? 'bg-sky-400'
-                          : 'bg-sky-600'
-                        : 'bg-sky-200'
-                    }`}
-                  />
+                  <span className={`absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${themeColors.navUnderline}`} />
                 </Link>
               </motion.div>
             ))}
@@ -141,31 +176,16 @@ const Header = memo(() => {
             {/* Dark Mode Toggle */}
             <motion.button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition-all duration-300 ${
-                isScrolled
-                  ? isDarkMode
-                    ? 'bg-gray-800 hover:bg-gray-700'
-                    : 'bg-gray-100 hover:bg-gray-200'
-                  : 'bg-white/20 hover:bg-white/30'
-              }`}
+              className={`p-2 rounded-full transition-all duration-300 ${themeColors.toggleBg}`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               <div className="w-5 h-5 flex items-center justify-center">
                 {isDarkMode ? (
-                  <i className="ri-sun-line text-yellow-400" aria-hidden="true" />
+                  <i className="ri-sun-line text-yellow-400 text-lg" aria-hidden="true" />
                 ) : (
-                  <i
-                    className={`ri-moon-line ${
-                      isScrolled
-                        ? isDarkMode
-                          ? 'text-gray-300'
-                          : 'text-gray-700'
-                        : 'text-white'
-                    }`}
-                    aria-hidden="true"
-                  />
+                  <i className={`ri-moon-line text-lg ${themeColors.toggleIcon}`} aria-hidden="true" />
                 )}
               </div>
             </motion.button>
@@ -174,13 +194,7 @@ const Header = memo(() => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/registration"
-                className={`hidden md:block px-6 py-2 rounded-full font-semibold transition-all duration-300 whitespace-nowrap ${
-                  isScrolled
-                    ? isDarkMode
-                      ? 'bg-sky-600 hover:bg-sky-700 text-white'
-                      : 'bg-sky-600 hover:bg-sky-700 text-white'
-                    : 'bg-white text-blue-950 hover:bg-blue-50'
-                }`}
+                className={`hidden md:block px-6 py-2 rounded-full font-semibold transition-all duration-300 whitespace-nowrap ${themeColors.registerBtn}`}
                 aria-label="Register for classes at I M Collegiate"
               >
                 Register Now
@@ -190,27 +204,12 @@ const Header = memo(() => {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`md:hidden p-2 rounded-lg transition-all duration-300 ${
-                isScrolled
-                  ? isDarkMode
-                    ? 'hover:bg-gray-700'
-                    : 'hover:bg-gray-100'
-                  : 'hover:bg-white/20'
-              }`}
+              className={`md:hidden p-2 rounded-lg transition-all duration-300 ${themeColors.menuToggle}`}
               aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMenuOpen}
             >
               <div className="w-5 h-5 flex items-center justify-center">
-                <i
-                  className={`ri-${isMenuOpen ? 'close' : 'menu'}-line ${
-                    isScrolled
-                      ? isDarkMode
-                        ? 'text-gray-300'
-                        : 'text-gray-700'
-                      : 'text-white'
-                  }`}
-                  aria-hidden="true"
-                />
+                <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line`} aria-hidden="true" />
               </div>
             </button>
           </div>
@@ -223,9 +222,7 @@ const Header = memo(() => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className={`md:hidden border-t rounded-b-lg shadow-lg mt-2 ${
-              isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'
-            }`}
+            className={`md:hidden border-t rounded-b-lg shadow-lg mt-2 ${themeColors.mobileBg}`}
             role="navigation"
           >
             <div className="px-4 py-4 space-y-2">
@@ -233,11 +230,7 @@ const Header = memo(() => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`block px-3 py-3 rounded-lg transition-all duration-300 ${
-                    isDarkMode
-                      ? 'text-gray-300 hover:text-sky-400 hover:bg-gray-700'
-                      : 'text-gray-700 hover:text-sky-600 hover:bg-blue-50'
-                  }`}
+                  className={`block px-3 py-3 rounded-lg transition-all duration-300 ${themeColors.mobileLink}`}
                   onClick={() => setIsMenuOpen(false)}
                   aria-label={`Navigate to ${item.name} page`}
                 >
@@ -246,9 +239,12 @@ const Header = memo(() => {
               ))}
               <Link
                 href="/registration"
-                className="block w-full text-center text-white py-3 rounded-lg transition-all duration-300 font-semibold whitespace-nowrap"
+                className={`block w-full text-center py-3 rounded-lg transition-all duration-300 font-semibold whitespace-nowrap ${
+                  isDarkMode 
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                    : 'bg-blue-950 hover:bg-blue-900 text-white'
+                }`}
                 onClick={() => setIsMenuOpen(false)}
-                style={{ backgroundColor: '#001f4d' }}
                 aria-label="Register for classes at I M Collegiate"
               >
                 Register Now
