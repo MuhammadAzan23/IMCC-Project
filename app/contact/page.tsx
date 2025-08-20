@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import logo from '../../images/logo.jpg';
 
 
 export default function Contact() {
@@ -143,7 +142,7 @@ export default function Contact() {
       
                   {/* Background Image */}
                   <img
-                    src={logo.src}
+                    src={'/images/logo.jpg'}
                     alt="IMCC Logo"
                     className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
                     aria-hidden="true"

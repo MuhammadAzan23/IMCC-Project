@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 import GlowText from '@/components/ui/GlowText';
 import ScrollingText from '@/components/ui/ScrollingText';
 import AnimatedText from '@/components/ui/AnimatedText';
-import logo from '../images/logo.jpg';
+
 
 const Home = memo(() => {
   const classCategories = [
@@ -89,7 +89,7 @@ const Home = memo(() => {
         <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
           {/* Background Image */}
           <img
-            src={logo.src}
+            src={'/images/logo.jpg'}
             alt="IMCC Logo"
             className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
             aria-hidden="true"

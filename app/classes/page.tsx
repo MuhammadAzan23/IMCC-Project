@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { memo } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import logo from '../../images/logo.jpg'; // Ensure the logo path is correct
 
 
 const Classes = memo(() => {
@@ -93,7 +92,7 @@ const Classes = memo(() => {
      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
           {/* Background Image */}
           <img
-            src={logo.src}
+            src={'/images/logo.jpg'}
             alt="IMCC Logo"
             className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
             aria-hidden="true"

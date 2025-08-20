@@ -5,14 +5,14 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedText from '@/components/ui/AnimatedText';
 import Link from 'next/link';
-import sirAshrafPic from '../../images/sir_ashraf.jpg';
-import sirAhtishamPic from '../../images/sir_ahtisham.jpg';
-import sirArifPic from '../../images/sir_arif.jpg';
-import sirKazimPic from '../../images/sir_kazim.jpg';
-import sirMoizPic from '../../images/sir_moiz.jpg';
-import sirAslamPic from '../../images/sir_aslam.jpg';
-import sirAzanPic from '../../images/sir_azan.jpg';
-import logo from '../../images/logo.jpg';
+// import sirAshrafPic from '../../images/sir_ashraf.jpg';
+// import sirAhtishamPic from '../../images/sir_ahtisham.jpg';
+// import sirArifPic from '../../images/sir_arif.jpg';
+// import sirKazimPic from '../../images/sir_kazim.jpg';
+// import sirMoizPic from '../../images/sir_moiz.jpg';
+// import sirAslamPic from '../../images/sir_aslam.jpg';
+// import sirAzanPic from '../../images/sir_azan.jpg';
+// import logo from '../../images/logo.jpg';
 
 export default function About() {
   const values = [
@@ -43,43 +43,43 @@ export default function About() {
       name: 'Sir Ashraf',
       subject: 'Chemistry & Accounting',
       qualification: 'PhD Chemistry, 15 years experience',
-      image: sirAshrafPic.src
+      image: "/images/sir_ashraf.jpg"
     },
     {
       name: 'Sir Arif',
       subject: 'Mathematics  ',
       qualification: 'M.Phil Electronics Engineering, 8 years experience',
-      image: sirArifPic.src
+      image: "/images/sir_arif.jpg"
     },
      {
       name: 'Sir Aslam',
       subject: 'Urdu & pakistan Studies',
       qualification: 'M.Phil Urdu, 6 years experience',
-      image: sirAslamPic.src
+      image: "/images/sir_aslam.jpg"
     },
     {
       name: 'Sir Ahtisham',
       subject: 'Physics ',
       qualification: 'M.Phil Physics, 4 years experience',
-      image: sirAhtishamPic.src
+      image: "/images/sir_ahtisham.jpg"
     },
     {
       name: 'Sir Kazim',
       subject: 'Biology',
       qualification: 'BS Pharmacy, 4 years experience',
-      image: sirKazimPic.src
+      image: "/images/sir_kazim.jpg"
     },
     {
       name: 'Sir Moiz',
       subject: 'English',
       qualification: 'BS English, 4 years experience',
-      image: sirMoizPic.src
+      image: "/images/sir_moiz.jpg"
     },
     {
       name: 'Sir Azan',
       subject: 'Computer Science',
       qualification: 'BS Computer Science, 2 years experience',
-      image: sirAzanPic.src
+      image: "/images/sir_azan.jpg"
     }
   ];
 
@@ -93,7 +93,7 @@ export default function About() {
     
           {/* Background Image */}
           <img
-            src={logo.src}
+            src={'/images/logo.jpg'}
             alt="IMCC Logo"
             className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
             aria-hidden="true"
