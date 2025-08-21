@@ -50,8 +50,8 @@ const Home = memo(() => {
         'https://readdy.ai/api/search-image?query=Pakistani%20male%20student%20smiling%20confidently%20in%20school%20uniform%20with%20books%2C%20clean%20studio%20background%2C%20professional%20portrait%20style&width=100&height=100&seq=student1&orientation=squarish',
     },
     {
-      name: 'Fatima Khan',
-      grade: 'Class 11th Pre-Engineering',
+      name: 'Khatima',
+      grade: 'Class 11th Computer Science',
       text: 'The coaching methods are excellent. I improved my physics and mathematics significantly.',
       image:
         'https://readdy.ai/api/search-image?query=Pakistani%20female%20student%20smiling%20confidently%20wearing%20hijab%20with%20books%2C%20clean%20studio%20background%2C%20professional%20portrait%20style&width=100&height=100&seq=student2&orientation=squarish',
@@ -231,8 +231,8 @@ const Home = memo(() => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               {[
-                { grade: 'Class 9th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'Computer'] },
-                { grade: 'Class 10th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'Computer'] },
+                { grade: 'Class 9th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'Computer', 'English'] },
+                { grade: 'Class 10th', subjects: ['Math', 'Physics', 'Chemistry', 'Biology', 'Computer', 'English'] },
                 { grade: 'Class 11th', subjects: ['Pre-Medical', 'Pre-Engineering', 'Computer Science', 'Commerce'] },
                 { grade: 'Class 12th', subjects: ['Pre-Medical', 'Pre-Engineering', 'Computer Science', 'Commerce'] },
               ].map((classItem, index) => (

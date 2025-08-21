@@ -27,11 +27,12 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-blue-100 mb-6 max-w-md leading-relaxed">
-              Empowering students from Class 9th to 12th with quality education in Pre-Medical, Pre-Engineering, Commerce, and Arts. Learn it. Live it. Pass it on.
+              Empowering students from Class 9th to 12th with quality education in Pre-Medical, Pre-Engineering, Computer Science, and Commerce. 
+              Learn it. Live it. Pass it on.
             </p>
             <div className="flex space-x-4">
               <motion.a 
-                href="#" 
+                href="https://www.facebook.com/IMCCkhiOfficial" 
                 className="w-12 h-12 flex items-center justify-center bg-sky-600 hover:bg-sky-700 rounded-full transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -47,7 +48,7 @@ export default function Footer() {
                 <i className="ri-instagram-line text-xl"></i>
               </motion.a>
               <motion.a 
-                href="https://wa.me/923001234567" 
+                href="https://wa.me/923472230321" 
                 className="w-12 h-12 flex items-center justify-center bg-green-600 hover:bg-green-700 rounded-full transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -93,8 +94,8 @@ export default function Footer() {
                   <i className="ri-phone-line text-sky-400"></i>
                 </div>
                 <div>
-                  <p className="text-blue-200">+92 300 1234567</p>
-                  <p className="text-blue-200">+92 21 1234567</p>
+                  <p className="text-blue-200">+92 347 2230321</p>
+                  <p className="text-blue-200">+92 344 8879933</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">

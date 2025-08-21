@@ -15,11 +15,6 @@ export default function Gallery() {
       category: 'classroom'
     },
     {
-      src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20conducting%20science%20experiment%20in%20modern%20laboratory%2C%20chemistry%20lab%20equipment%2C%20students%20wearing%20safety%20goggles&width=600&height=400&seq=gallery2&orientation=landscape',
-      alt: 'Science Lab',
-      category: 'laboratory'
-    },
-    {
       src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20taking%20exam%20in%20examination%20hall%2C%20focused%20study%20environment%2C%20students%20writing%20on%20answer%20sheets&width=600&height=400&seq=gallery3&orientation=landscape',
       alt: 'Examination Hall',
       category: 'exams'
@@ -74,7 +69,6 @@ export default function Gallery() {
   const categories = [
     { id: 'all', name: 'All Photos' },
     { id: 'classroom', name: 'Classroom' },
-    { id: 'laboratory', name: 'Laboratory' },
     { id: 'exams', name: 'Examinations' },
     { id: 'events', name: 'Events' }
   ];
@@ -113,7 +107,7 @@ export default function Gallery() {
               className="space-y-4 mb-12"
             >
               <h1 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#001f4d' }}>
-                Explore Our Gallery
+                Explore Our Gallery 
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
                 Explore our vibrant learning environment and student activities
@@ -209,7 +203,8 @@ export default function Gallery() {
               Want to Be Part of Our Story?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Join our vibrant learning community and create your own success story at I M Collegiate.
+              Join our vibrant learning community and create your own success story at <br />
+              I M Collegiate.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}

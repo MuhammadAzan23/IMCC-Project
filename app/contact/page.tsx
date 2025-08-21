@@ -86,13 +86,13 @@ export default function Contact() {
     {
       icon: 'ri-map-pin-line',
       title: 'Address',
-      details: ['I M Collegiate Coaching Centre', 'Karachi, Pakistan'],
+      details: ['Street#10,near Meezan Academy school', 'Karachi, Pakistan'],
       color: 'bg-blue-600'
     },
     {
       icon: 'ri-phone-line',
       title: 'Phone',
-      details: ['+92 300 1234567', '+92 21 1234567'],
+      details: ['+92 347 2230321', '+92 344 8879933'],
       color: 'bg-green-600'
     },
     {
@@ -104,7 +104,7 @@ export default function Contact() {
     {
       icon: 'ri-time-line',
       title: 'Timing',
-      details: ['Mon - Fri: 8:00 AM - 8:00 PM', 'Saturday: 8:00 AM - 6:00 PM'],
+      details: ['Mon - Thu: 4:00 PM - 9:30 PM', 'Sat - Sun: 4:00 PM - 9:30 PM'],
       color: 'bg-orange-600'
     }
   ];
@@ -114,14 +114,14 @@ export default function Contact() {
       icon: 'ri-whatsapp-line',
       title: 'WhatsApp',
       description: 'Chat with us instantly',
-      link: 'https://wa.me/923001234567',
+      link: 'https://wa.me/923472230321',
       color: 'bg-green-500 hover:bg-green-600'
     },
     {
       icon: 'ri-phone-line',
       title: 'Call Now',
       description: 'Speak with our team',
-      link: 'tel:+923001234567',
+      link: 'tel:+923448879933',
       color: 'bg-blue-500 hover:bg-blue-600'
     },
     {
@@ -414,14 +414,14 @@ export default function Contact() {
             className="rounded-3xl overflow-hidden shadow-2xl"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.1956417667987!2d67.0011364!3d24.8607343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e06651d4bbf%3A0x9cf92f44555a0c23!2sKarachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1647329739087!5m2!1sen!2s"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.631033168235!2d67.0857290765793!3d24.8573302840569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d173614b47d%3A0xd120cbe90b695fac!2sMeezan%20Hostel%20B%20Karachi!5e0!3m2!1sen!2s!4v1724213245678!5m2!1sen!2s"
+  width="100%"
+  height="450"
+  style={{ border: 0 }}
+  allowFullScreen
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+/>
           </motion.div>
         </div>
       </section>

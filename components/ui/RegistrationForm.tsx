@@ -19,10 +19,12 @@ export default function RegistrationForm() {
     'Class 10th',
     'Class 11th Pre-Medical',
     'Class 11th Pre-Engineering',
+    'Class 11th Computer Science',
     'Class 11th Commerce',
-    'Class 11th Arts',
     'Class 12th Pre-Medical',
-    'Class 12th Pre-Engineering'
+    'Class 12th Pre-Engineering',
+    'Class 12th Computer Science',
+    'Class 12th Commerce',
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
