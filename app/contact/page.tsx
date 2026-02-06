@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 
 export default function Contact() {
@@ -28,7 +26,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     if (!formData.name || !formData.email || !formData.message) {
       setSubmitStatus('Please fill in all required fields.');
       setIsSubmitting(false);
@@ -78,7 +76,7 @@ export default function Contact() {
         message: ''
       });
     }
-    
+
     setIsSubmitting(false);
   };
 
@@ -134,299 +132,260 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-white transition-colors duration-300">
-      <Header />
-      
+    <div className="min-h-screen bg-white dark:bg-imcc-navy transition-colors duration-300">
+
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
-      
-                  {/* Background Image */}
-                  <img
-                    src={'/images/logo.jpg'}
-                    alt="IMCC Logo"
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
-                    aria-hidden="true"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-white/10" />
-        
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/10 via-transparent to-blue-950/10"></div>
-        
+      <section className="min-h-[60vh] flex items-center justify-center relative overflow-hidden bg-imcc-navy">
+        {/* Dynamic Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-imcc-navy via-imcc-navy to-blue-950 opacity-90" />
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-sky-500/10 rounded-full blur-[100px]"
+          />
+        </div>
+
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
           >
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-4 mb-12"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#001f4d' }}>
-                Get in Touch with <br />
-                <span className="text-3xl md:text-4xl">I M Collegiate Coaching Centre</span>
-                
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                For admissions, inquiries, or any questions
-              </p>
-            </motion.div>
+            <div className="inline-block px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-bold text-sm tracking-wider uppercase mb-8">
+              Contact Us
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+              Let's Start Your <span className="text-sky-400">Success Story</span>
+            </h1>
+            <p className="text-xl text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
+              Have questions about admissions or our programs? Our team is here to help you navigate your academic journey.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Quick Actions */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-sky-50">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#001f4d' }}>
-              Quick Contact
-            </h2>
-            <p className="text-xl text-gray-600">
-              Choose the best way to reach us
-            </p>
-          </motion.div>
-
+      {/* Quick Access Section */}
+      <section className="py-24 sm:py-32 bg-gray-50 dark:bg-imcc-navy/50 relative overflow-hidden">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {quickActions.map((action, index) => (
               <motion.a
                 key={index}
                 href={action.link}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className={`${action.color} text-white p-8 rounded-3xl text-center transition-all duration-300 block shadow-xl hover:shadow-2xl`}
+                viewport={{ once: true }}
+                className="group relative p-10 rounded-[2.5rem] bg-white dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:border-sky-500/20 hover:shadow-2xl transition-all duration-500 overflow-hidden"
               >
-                <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                  <i className={`${action.icon} text-3xl`}></i>
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 ${action.color.split(' ')[0]} rounded-2xl flex items-center justify-center mb-8 text-white shadow-xl transition-all duration-500 group-hover:scale-110`}>
+                    <i className={`${action.icon} text-3xl`} />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-imcc-navy dark:text-white">
+                    {action.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6">
+                    {action.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-sky-500 font-bold group-hover:gap-3 transition-all">
+                    Connect Now
+                    <i className="ri-arrow-right-line" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{action.title}</h3>
-                <p className="text-sm opacity-90">{action.description}</p>
               </motion.a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Information & Form */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
+      {/* Contact Core Section */}
+      <section className="py-24 sm:py-32 bg-white dark:bg-imcc-navy">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-20">
+            {/* Info Side */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-blue-50 to-sky-100 rounded-3xl p-8 shadow-xl"
+              viewport={{ once: true }}
+              className="lg:w-2/5"
             >
-              <h2 className="text-3xl font-bold mb-8" style={{ color: '#001f4d' }}>
-                Get in Touch
+              <div className="inline-block px-4 py-2 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold text-sm tracking-wider uppercase mb-6">
+                Direct Contact
+              </div>
+              <h2 className="text-4xl sm:text-5xl font-bold mb-10 text-imcc-navy dark:text-white">
+                Our Campus <span className="text-sky-500">Network</span>
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                We're here to help you with your educational journey. Feel free to reach out to us through any of the following channels.
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
+                Visit our state-of-the-art facilities or reach out through our official channels. We're dedicated to providing rapid support for all student inquiries.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-10">
                 {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex items-start space-x-4"
-                  >
-                    <div className={`w-12 h-12 ${info.color} rounded-full flex items-center justify-center flex-shrink-0`}>
-                      <i className={`${info.icon} text-white text-xl`}></i>
+                  <div key={index} className="flex gap-6 group">
+                    <div className="w-14 h-14 bg-gray-50 dark:bg-white/5 rounded-2xl flex items-center justify-center text-sky-500 shadow-lg border border-gray-100 dark:border-white/10 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                      <i className={`${info.icon} text-2xl`} />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1" style={{ color: '#001f4d' }}>
-                        {info.title}
-                      </h3>
-                      {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-gray-600">
+                      <h4 className="text-xl font-bold text-imcc-navy dark:text-white mb-2">{info.title}</h4>
+                      {info.details.map((detail, idx) => (
+                        <p key={idx} className="text-gray-500 dark:text-gray-400 font-medium">
                           {detail}
                         </p>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Form Side */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-sky-50 to-blue-100 rounded-3xl p-8 shadow-xl"
+              viewport={{ once: true }}
+              className="lg:w-3/5"
             >
-              <h2 className="text-3xl font-bold mb-8" style={{ color: '#001f4d' }}>
-                Send Message
-              </h2>
+              <div className="bg-gray-50 dark:bg-white/5 p-8 sm:p-12 rounded-[3.5rem] border border-gray-100 dark:border-white/10 shadow-2xl">
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Full Name</label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="e.g. Ali Ahmed"
+                        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-300"
+                      />
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Email Address</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="e.g. ali@example.com"
+                        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-300"
+                      />
+                    </div>
+                  </div>
 
-              <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Phone</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        placeholder="e.g. 03xx-xxxxxxx"
+                        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-300"
+                      />
+                    </div>
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Subject</label>
+                      <input
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        placeholder="How can we help?"
+                        className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-300"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Your Message</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                      placeholder="Your full name"
+                      rows={5}
+                      placeholder="Tell us what you're looking for..."
+                      className="w-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-300 resize-none"
                     />
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                      placeholder="Your email address"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                      placeholder="Your phone number"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                      placeholder="Message subject"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                    Message * (max 500 characters)
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={5}
-                    maxLength={500}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                    placeholder="Your message..."
-                  />
-                  <p className="text-sm text-gray-500 mt-1">
-                    {formData.message.length}/500 characters
-                  </p>
-                </div>
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full text-white py-3 px-6 rounded-full font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg whitespace-nowrap"
-                  style={{ backgroundColor: '#001f4d' }}
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </motion.button>
-
-                {submitStatus && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`text-center p-4 rounded-lg ${
-                      submitStatus.includes('successfully') 
-                        ? 'bg-green-100 text-green-800' 
-                        : 'bg-red-100 text-red-800'
-                    }`}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    disabled={isSubmitting}
+                    className="w-full bg-imcc-navy dark:bg-sky-500 text-white py-5 rounded-2xl font-bold text-xl shadow-xl hover:shadow-sky-500/20 disabled:opacity-50 transition-all flex items-center justify-center gap-3"
                   >
-                    {submitStatus}
-                  </motion.div>
-                )}
-              </form>
+                    {isSubmitting ? 'Sending Enquiry...' : 'Send Message'}
+                    <i className="ri-send-plane-fill" />
+                  </motion.button>
+
+                  {submitStatus && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`text-center p-5 rounded-2xl font-bold ${submitStatus.includes('successfully')
+                        ? 'bg-sky-500/10 text-sky-600 border border-sky-500/20'
+                        : 'bg-red-500/10 text-red-600 border border-red-500/20'
+                        }`}
+                    >
+                      {submitStatus}
+                    </motion.div>
+                  )}
+                </form>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-sky-50">
-        <div className="container mx-auto px-4">
+      <section className="py-24 sm:py-32 bg-gray-50 dark:bg-imcc-navy/50 relative">
+        <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#001f4d' }}>
-              Find Us
+            <div className="inline-block px-4 py-2 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold text-sm tracking-wider uppercase mb-6">
+              Location
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold text-imcc-navy dark:text-white">
+              Visit Our <span className="text-sky-500">Campus</span>
             </h2>
-            <p className="text-xl text-gray-600">
-              Visit our campus in Karachi
-            </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="rounded-3xl overflow-hidden shadow-2xl"
+            viewport={{ once: true }}
+            className="rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white dark:border-white/10 h-[30rem]"
           >
             <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.631033168235!2d67.0857290765793!3d24.8573302840569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d173614b47d%3A0xd120cbe90b695fac!2sMeezan%20Hostel%20B%20Karachi!5e0!3m2!1sen!2s!4v1724213245678!5m2!1sen!2s"
-  width="100%"
-  height="450"
-  style={{ border: 0 }}
-  allowFullScreen
-  loading="lazy"
-  referrerPolicy="no-referrer-when-downgrade"
-/>
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3621.631033168235!2d67.0857290765793!3d24.8573302840569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33d173614b47d%3A0xd120cbe90b695fac!2sMeezan%20Hostel%20B%20Karachi!5e0!3m2!1sen!2s!4v1724213245678!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

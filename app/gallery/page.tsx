@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [filter, setFilter] = useState('all');
@@ -73,27 +71,26 @@ export default function Gallery() {
     { id: 'events', name: 'Events' }
   ];
 
-  const filteredImages = filter === 'all' 
-    ? images 
+  const filteredImages = filter === 'all'
+    ? images
     : images.filter(img => img.category === filter);
 
   return (
     <div className="min-h-screen bg-white transition-colors duration-300">
-      <Header />
-      
+
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950/10 via-transparent to-blue-950/10"></div>
-        
-          {/* Background Image */}
-          <img
-            src={'/images/logo.jpg'}
-            alt="IMCC Logo"
-            className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
-            aria-hidden="true"
-          />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-white/10" />
+
+        {/* Background Image */}
+        <img
+          src={'/images/logo.jpg'}
+          alt="IMCC Logo"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
+          aria-hidden="true"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/10" />
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -107,7 +104,7 @@ export default function Gallery() {
               className="space-y-4 mb-12"
             >
               <h1 className="text-4xl md:text-6xl font-bold leading-tight" style={{ color: '#001f4d' }}>
-                Explore Our Gallery 
+                Explore Our Gallery
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
                 Explore our vibrant learning environment and student activities
@@ -141,11 +138,10 @@ export default function Gallery() {
                 onClick={() => setFilter(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 whitespace-nowrap shadow-lg ${
-                  filter === category.id
-                    ? 'text-white shadow-xl'
-                    : 'bg-white text-gray-700 hover:bg-blue-50'
-                }`}
+                className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 whitespace-nowrap shadow-lg ${filter === category.id
+                  ? 'text-white shadow-xl'
+                  : 'bg-white text-gray-700 hover:bg-blue-50'
+                  }`}
                 style={filter === category.id ? { backgroundColor: '#001f4d' } : {}}
               >
                 {category.name}
@@ -252,7 +248,6 @@ export default function Gallery() {
         </motion.div>
       )}
 
-      <Footer />
     </div>
   );
 }

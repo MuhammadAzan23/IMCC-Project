@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import AnimatedText from '@/components/ui/AnimatedText';
 import Link from 'next/link';
 // import sirAshrafPic from '../../images/sir_ashraf.jpg';
@@ -51,7 +49,7 @@ export default function About() {
       qualification: 'M.Phil Electronics Engineering, 8 years experience',
       image: "/images/sir_arif.JPG"
     },
-     {
+    {
       name: 'Sir Aslam',
       subject: 'Urdu & pakistan Studies',
       qualification: 'M.Phil Urdu, 6 years experience',
@@ -84,126 +82,125 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-white transition-colors duration-300">
-      <Header />
-      
+    <div className="min-h-screen bg-white dark:bg-imcc-navy transition-colors duration-300">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/10 via-transparent to-blue-950/10"></div>
-    
-          {/* Background Image */}
-          <img
-            src={'/images/logo.jpg'}
-            alt="IMCC Logo"
-            className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
-            aria-hidden="true"
+      <section className="min-h-[70vh] flex items-center justify-center relative overflow-hidden bg-imcc-navy">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-imcc-navy via-imcc-navy to-blue-950 opacity-90" />
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-24 -right-24 w-96 h-96 bg-sky-400/20 rounded-full blur-3xl"
           />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-white/10" />
+        </div>
+
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-4"
-            >
-             <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug md:leading-tight"
-                style={{ color: '#001f4d' }}
-              >
-                About I M Collegiate Coaching Centre
-              </motion.h1> <br />
-              <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-                Empowering students with quality education and modern teaching methods since our establishment in Karachi.
-              </p>
-            </motion.div>
+            <div className="inline-block px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 font-bold text-sm tracking-wider uppercase mb-8">
+              Since 2004
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+              Our Journey of <span className="text-sky-400">Excellence</span>
+            </h1>
+            <p className="text-xl text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
+              Empowering students with quality education and modern teaching methods in the heart of Karachi for over two decades.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <section className="py-24 sm:py-32 bg-white dark:bg-imcc-navy relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-blue-50 to-sky-100 rounded-3xl p-8 shadow-xl"
+              viewport={{ once: true }}
+              className="group p-12 rounded-[3rem] bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:shadow-2xl transition-all duration-500"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#001f4d' }}>
-                Our Mission
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                To provide comprehensive and quality education to students from Class 9th to 12th, preparing them for success in their academic journey and future careers.
-              </p>
-              <p className="text-lg text-gray-600">
-                We believe in nurturing young minds through innovative teaching methods, personalized attention, and a supportive learning environment that encourages excellence.
-              </p>
+              <div className="w-16 h-16 bg-sky-500/10 rounded-2xl flex items-center justify-center mb-10 text-sky-500 group-hover:bg-sky-500 group-hover:text-white transition-all duration-500">
+                <i className="ri-flag-2-line text-3xl" />
+              </div>
+              <h2 className="text-4xl font-bold mb-8 text-imcc-navy dark:text-white">Our Mission</h2>
+              <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p>
+                  To provide comprehensive and quality education to students from Class 9th to 12th, preparing them for success in their academic journey and future careers.
+                </p>
+                <p>
+                  We believe in nurturing young minds through innovative teaching methods, personalized attention, and a supportive learning environment.
+                </p>
+              </div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-sky-50 to-blue-100 rounded-3xl p-8 shadow-xl"
+              viewport={{ once: true }}
+              className="group p-12 rounded-[3rem] bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 hover:shadow-2xl transition-all duration-500"
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#001f4d' }}>
-                Our Vision
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                To be the leading coaching center in Karachi, known for academic excellence, character development, and producing successful graduates who contribute positively to society.
-              </p>
-              <p className="text-lg text-gray-600">
-                We envision a future where every student who joins our institution achieves their academic goals and becomes a confident, skilled, and responsible citizen.
-              </p>
+              <div className="w-16 h-16 bg-sky-500/10 rounded-2xl flex items-center justify-center mb-10 text-sky-500 group-hover:bg-sky-500 group-hover:text-white transition-all duration-500">
+                <i className="ri-eye-line text-3xl" />
+              </div>
+              <h2 className="text-4xl font-bold mb-8 text-imcc-navy dark:text-white">Our Vision</h2>
+              <div className="space-y-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p>
+                  To be the leading coaching center in Karachi, known for academic excellence, character development, and producing successful graduates.
+                </p>
+                <p>
+                  We envision a future where every student achieves their academic goals and becomes a confident, skilled, and responsible citizen.
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-sky-50">
-        <div className="container mx-auto px-4">
+      {/* Core Values */}
+      <section className="py-24 sm:py-32 bg-gray-50 dark:bg-imcc-navy/50">
+        <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            viewport={{ once: true }}
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#001f4d' }}>
-              Our Core Values
+            <div className="inline-block px-4 py-2 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold text-sm tracking-wider uppercase mb-6">
+              Our Foundations
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-imcc-navy dark:text-white">
+              The Principles That <span className="text-sky-500">Guide Us</span>
             </h2>
-            <p className="text-xl text-gray-600">
-              The principles that guide everything we do
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="text-center bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                viewport={{ once: true }}
+                className="group bg-white dark:bg-white/5 p-8 rounded-[2rem] border border-gray-100 dark:border-white/10 hover:border-sky-500/20 hover:shadow-2xl transition-all duration-500"
               >
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg" style={{ backgroundColor: '#001f4d' }}>
-                  <i className={`${value.icon} text-2xl text-white`}></i>
+                <div className="w-14 h-14 bg-sky-500/10 rounded-2xl flex items-center justify-center mb-8 text-sky-500 group-hover:bg-sky-500 group-hover:text-white transition-all duration-500 shadow-lg">
+                  <i className={`${value.icon} text-2xl`}></i>
                 </div>
-                <h3 className="text-xl font-semibold mb-4" style={{ color: '#001f4d' }}>
+                <h3 className="text-xl font-bold mb-4 text-imcc-navy dark:text-white">
                   {value.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -212,50 +209,54 @@ export default function About() {
         </div>
       </section>
 
-      {/* Teachers */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
+      {/* Expert Faculty */}
+      <section className="py-24 sm:py-32 bg-white dark:bg-imcc-navy">
+        <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            viewport={{ once: true }}
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#001f4d' }}>
-              Meet Our Expert Faculty
+            <div className="inline-block px-4 py-2 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 font-bold text-sm tracking-wider uppercase mb-6">
+              Elite Faculty
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-imcc-navy dark:text-white">
+              Learn from the <span className="text-sky-500">Best</span>
             </h2>
-            <p className="text-xl text-gray-600">
-              Experienced educators dedicated to your success
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {teachers.map((teacher, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -10 }}
-                className="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                viewport={{ once: true }}
+                className="group bg-white dark:bg-white/5 rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-white/10"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-72 overflow-hidden">
                   <img
                     src={teacher.image}
                     alt={teacher.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-imcc-navy via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2" style={{ color: '#001f4d' }}>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-2 text-imcc-navy dark:text-white group-hover:text-sky-500 transition-colors">
                     {teacher.name}
                   </h3>
-                  <p className="text-sky-600 font-medium mb-2">
+                  <p className="text-sky-600 dark:text-sky-400 font-bold text-sm uppercase tracking-wider mb-4">
                     {teacher.subject}
                   </p>
-                  <p className="text-gray-600 text-sm">
-                    {teacher.qualification}
-                  </p>
+                  <div className="pt-4 border-t border-gray-100 dark:border-white/10">
+                    <p className="text-gray-500 dark:text-gray-400 text-sm italic">
+                      {teacher.qualification}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -263,26 +264,30 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#001f4d' }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/20 to-sky-900/20"></div>
-        <div className="relative z-10 container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+      {/* Stats Section */}
+      <section className="py-24 bg-imcc-navy relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {[
-              { number: '15000+', label: 'Students Enrolled' },
-              { number: '10+', label: 'Expert Teachers' },
-              { number: '15+', label: 'Years of Excellence' },
+              { number: '15000+', label: 'Total Enrolled' },
+              { number: '10+', label: 'Elite Teachers' },
+              { number: '20+', label: 'Years Experience' },
               { number: '95%', label: 'Success Rate' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-white"
+                viewport={{ once: true }}
+                className="text-center"
               >
-                <h3 className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</h3>
-                <p className="text-blue-200">{stat.label}</p>
+                <div className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4">
+                  {stat.number}
+                </div>
+                <div className="text-sky-400 font-bold uppercase tracking-widest text-sm">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -290,36 +295,37 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-sky-50">
+      <section className="py-24 sm:py-32 bg-gray-50 dark:bg-imcc-navy/50 relative overflow-hidden">
         <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#001f4d' }}>
-              Ready to Join Our Family?
+            <h2 className="text-4xl sm:text-5xl font-bold text-imcc-navy dark:text-white mb-8">
+              Become Part of Our <span className="text-sky-500">Success Story</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-              Become part of I M Collegiate's success story and achieve your academic dreams with our expert guidance.
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed">
+              We're more than just a coaching center; we're a community dedicated to your academic growth and future success.
             </p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 href="/registration"
-                className="inline-block text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:shadow-xl whitespace-nowrap"
-                style={{ backgroundColor: '#001f4d' }}
+                className="px-12 py-5 bg-imcc-navy dark:bg-sky-500 text-white rounded-2xl font-bold text-xl transition-all duration-300 shadow-2xl hover:shadow-sky-500/20"
               >
-                Register Now
+                Apply for Admission
               </Link>
-            </motion.div>
+              <Link
+                href="/contact"
+                className="px-12 py-5 bg-white dark:bg-white/5 text-imcc-navy dark:text-white border border-gray-200 dark:border-white/10 rounded-2xl font-bold text-xl transition-all duration-300"
+              >
+                Visit Campus
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

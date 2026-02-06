@@ -35,7 +35,7 @@ export default function RegistrationForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     if (!formData.name || !formData.class || !formData.whatsapp) {
       setSubmitStatus('Please fill in all required fields.');
       setIsSubmitting(false);
@@ -74,179 +74,127 @@ export default function RegistrationForm() {
       setSubmitStatus('Registration submitted successfully! We will contact you soon.');
       setFormData({ name: '', class: '', subject: '', whatsapp: '', message: '' });
     }
-    
+
     setIsSubmitting(false);
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-sky-50">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: '#001f4d' }}>
-            Register Now
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Start your journey to academic excellence with I M Collegiate
-          </p>
-        </motion.div>
+    <div className="bg-white dark:bg-white/5 p-8 sm:p-12 rounded-[3.5rem] border border-gray-100 dark:border-white/10 shadow-2xl relative overflow-hidden group">
+      {/* Decorative gradient */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-sky-500/10 transition-all duration-500" />
 
-        <div className="max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            className="bg-white p-8 rounded-3xl shadow-2xl"
-          >
-            <form id="registration-form" onSubmit={handleSubmit} className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+      <form id="registration-form" onSubmit={handleSubmit} className="relative z-10 space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Full Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+              placeholder="e.g. Ali Ahmed"
+              className="w-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-400"
+            />
+          </div>
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Class Admission For</label>
+            <div className="relative">
+              <select
+                name="class"
+                value={formData.class}
+                onChange={handleInputChange}
+                required
+                className="w-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white appearance-none cursor-pointer"
               >
-                <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
-                  placeholder="Enter your full name"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <label htmlFor="class" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                  Select Class *
-                </label>
-                <select
-                  id="class"
-                  name="class"
-                  value={formData.class}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm pr-8"
-                >
-                  <option value="">Select your class</option>
-                  {classes.map((cls) => (
-                    <option key={cls} value={cls}>
-                      {cls}
-                    </option>
-                  ))}
-                </select>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <label htmlFor="subject" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                  Preferred Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
-                  placeholder="e.g., Physics, Chemistry, Mathematics"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-              >
-                <label htmlFor="whatsapp" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                  WhatsApp Number *
-                </label>
-                <input
-                  type="tel"
-                  id="whatsapp"
-                  name="whatsapp"
-                  value={formData.whatsapp}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
-                  placeholder="Enter your WhatsApp number"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#001f4d' }}>
-                  Additional Message (max 500 characters)
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={4}
-                  maxLength={500}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-300 text-sm"
-                  placeholder="Any additional information or questions..."
-                />
-                <p className="text-sm text-gray-500 mt-1">
-                  {formData.message.length}/500 characters
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="text-center"
-              >
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
-                  style={{ backgroundColor: '#001f4d' }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  animate={isSubmitting ? { scale: [1, 1.05, 1] } : {}}
-                  transition={isSubmitting ? { duration: 0.5, repeat: Infinity } : {}}
-                >
-                  {isSubmitting ? 'Submitting...' : 'Submit Registration'}
-                </motion.button>
-              </motion.div>
-
-              {submitStatus && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`text-center p-4 rounded-2xl ${
-                    submitStatus.includes('successfully') 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}
-                >
-                  {submitStatus}
-                </motion.div>
-              )}
-            </form>
-          </motion.div>
+                <option value="" className="dark:bg-imcc-navy">Select your class</option>
+                {classes.map((cls) => (
+                  <option key={cls} value={cls} className="dark:bg-imcc-navy">
+                    {cls}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                <i className="ri-arrow-down-s-line text-xl" />
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">WhatsApp Number</label>
+            <input
+              type="tel"
+              name="whatsapp"
+              value={formData.whatsapp}
+              onChange={handleInputChange}
+              required
+              placeholder="e.g. 03xx-xxxxxxx"
+              className="w-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-400"
+            />
+          </div>
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Preferred Subjects</label>
+            <input
+              type="text"
+              name="subject"
+              value={formData.subject}
+              onChange={handleInputChange}
+              placeholder="e.g. Physics, Maths"
+              className="w-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-400"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          <label className="text-sm font-bold text-imcc-navy dark:text-white uppercase tracking-wider ml-2">Additional Message (Optional)</label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleInputChange}
+            rows={4}
+            placeholder="Any specific goals or questions?"
+            className="w-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-sky-500 outline-none transition-all dark:text-white placeholder:text-gray-400 resize-none"
+          />
+        </div>
+
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          disabled={isSubmitting}
+          className="w-full bg-imcc-navy dark:bg-sky-500 text-white py-5 rounded-2xl font-bold text-xl shadow-xl hover:shadow-sky-500/20 disabled:opacity-50 transition-all flex items-center justify-center gap-3 group/btn"
+        >
+          {isSubmitting ? (
+            <>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full"
+              />
+              Processing Admission...
+            </>
+          ) : (
+            <>
+              Submit Registration
+              <i className="ri-arrow-right-line group-hover/btn:translate-x-1 transition-transform" />
+            </>
+          )}
+        </motion.button>
+
+        {submitStatus && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`text-center p-5 rounded-2xl font-bold ${submitStatus.includes('successfully')
+              ? 'bg-sky-500/10 text-sky-600 border border-sky-500/20'
+              : 'bg-red-500/10 text-red-600 border border-red-500/20'
+              }`}
+          >
+            {submitStatus}
+          </motion.div>
+        )}
+      </form>
+    </div>
   );
 }

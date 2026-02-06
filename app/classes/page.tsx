@@ -4,8 +4,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { memo } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 
 const Classes = memo(() => {
@@ -86,19 +84,18 @@ const Classes = memo(() => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      <Header />
 
       {/* Hero Section */}
-     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
-          {/* Background Image */}
-          <img
-            src={'/images/logo.jpg'}
-            alt="IMCC Logo"
-            className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
-            aria-hidden="true"
-          />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-white/10" />
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50">
+        {/* Background Image */}
+        <img
+          src={'/images/logo.jpg'}
+          alt="IMCC Logo"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 blur-sm"
+          aria-hidden="true"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/10" />
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 max-w-4xl text-center">
@@ -325,11 +322,7 @@ const Classes = memo(() => {
         </div>
       </section>
 
-      <Footer />
     </div>
-    // Placeholder for RegistrationForm integration
-    // To send form data to class-specific Google Sheets, include a <select> in RegistrationForm with options matching the 'grade' field above (e.g., 'Class 9th (Science Group)', 'Class 11th Pre-Engineering/Computer Science')
-    // Example: On submission, POST to /api/register with selected class, and append data to the corresponding sheet/tab
   );
 });
 

@@ -6,55 +6,53 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
-    <footer className="text-white" style={{ backgroundColor: '#001f4d' }}>
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-imcc-navy text-white relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-sky-500/5 rounded-full blur-3xl -mr-48 -mt-48" />
+
+      <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="col-span-1 md:col-span-2"
+            className="lg:col-span-2"
           >
-            <div className="flex items-center space-x-3 mb-6">
-              <img
-                src="https://static.readdy.ai/image/9cee6152417353324a92f1cb4d6ac32b/db04df6d67b5c209517963537a24bf52.png"
-                alt="I M Collegiate Coaching Centre"
-                className="w-16 h-16 object-contain"
-              />
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="w-16 h-16 bg-white rounded-2xl p-2 shadow-xl shadow-sky-500/10">
+                <img
+                  src="https://static.readdy.ai/image/9cee6152417353324a92f1cb4d6ac32b/db04df6d67b5c209517963537a24bf52.png"
+                  alt="I M Collegiate Coaching Centre"
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <div>
-                <h3 className="text-2xl font-bold">I M Collegiate Coaching Centre</h3>
-                <p className="text-blue-200">Karachi, Pakistan</p>
+                <h3 className="text-2xl font-bold tracking-tight">I M Collegiate</h3>
+                <p className="text-sky-400 font-medium">Empowering Excellence</p>
               </div>
             </div>
-            <p className="text-blue-100 mb-6 max-w-md leading-relaxed">
-              Empowering students from Class 9th to 12th with quality education in Pre-Medical, Pre-Engineering, Computer Science, and Commerce. 
-              Learn it. Live it. Pass it on.
+            <p className="text-gray-300 mb-8 max-w-md leading-relaxed text-lg">
+              Empowering students from Class 9th to 12th with quality education in Pre-Medical, Pre-Engineering, Computer Science, and Commerce.
+              <span className="block mt-2 italic text-sky-400/80">"Learn it. Live it. Pass it on."</span>
             </p>
-            <div className="flex space-x-4">
-              <motion.a 
-                href="https://www.facebook.com/IMCCkhiOfficial" 
-                className="w-12 h-12 flex items-center justify-center bg-sky-600 hover:bg-sky-700 rounded-full transition-all duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <i className="ri-facebook-fill text-xl"></i>
-              </motion.a>
-              <motion.a 
-                href="#" 
-                className="w-12 h-12 flex items-center justify-center bg-sky-600 hover:bg-sky-700 rounded-full transition-all duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <i className="ri-instagram-line text-xl"></i>
-              </motion.a>
-              <motion.a 
-                href="https://wa.me/923472230321" 
-                className="w-12 h-12 flex items-center justify-center bg-green-600 hover:bg-green-700 rounded-full transition-all duration-300"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <i className="ri-whatsapp-line text-xl"></i>
-              </motion.a>
+            <div className="flex space-x-5">
+              {[
+                { icon: 'ri-facebook-fill', href: 'https://www.facebook.com/IMCCkhiOfficial', color: 'hover:bg-blue-600' },
+                { icon: 'ri-instagram-line', href: '#', color: 'hover:bg-pink-600' },
+                { icon: 'ri-whatsapp-line', href: 'https://wa.me/923472230321', color: 'hover:bg-green-600' }
+              ].map((social, idx) => (
+                <motion.a
+                  key={idx}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl transition-all duration-300 ${social.color}`}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <i className={`${social.icon} text-xl`}></i>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
@@ -63,13 +61,26 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h4 className="text-xl font-semibold mb-6">Quick Links</h4>
-            <div className="space-y-3">
-              <Link href="/" className="block text-blue-200 hover:text-white transition-colors duration-200">Home</Link>
-              <Link href="/about" className="block text-blue-200 hover:text-white transition-colors duration-200">About Us</Link>
-              <Link href="/classes" className="block text-blue-200 hover:text-white transition-colors duration-200">Classes</Link>
-              <Link href="/registration" className="block text-blue-200 hover:text-white transition-colors duration-200">Register</Link>
-              <Link href="/contact" className="block text-blue-200 hover:text-white transition-colors duration-200">Contact</Link>
+            <h4 className="text-xl font-bold mb-8 relative inline-block">
+              Quick Links
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-sky-500 rounded-full" />
+            </h4>
+            <div className="space-y-4">
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'About Us', href: '/about' },
+                { name: 'Classes', href: '/classes' },
+                { name: 'Register Now', href: '/registration' },
+                { name: 'Contact Us', href: '/contact' }
+              ].map((link, idx) => (
+                <Link
+                  key={idx}
+                  href={link.href}
+                  className="block text-gray-400 hover:text-sky-400 hover:translate-x-2 transition-all duration-300"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
           </motion.div>
 
@@ -78,49 +89,50 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="text-xl font-semibold mb-6">Contact Info</h4>
-            <div className="space-y-4">
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 flex items-center justify-center mt-1">
-                  <i className="ri-map-pin-line text-sky-400"></i>
+            <h4 className="text-xl font-bold mb-8 relative inline-block">
+              Contact Us
+              <span className="absolute -bottom-2 left-0 w-8 h-1 bg-sky-500 rounded-full" />
+            </h4>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-sky-500/10 rounded-lg text-sky-400">
+                  <i className="ri-map-pin-line text-xl"></i>
                 </div>
-                <div>
-                  <p className="text-blue-200">I M Collegiate Coaching Centre</p>
-                  <p className="text-blue-200">Karachi, Pakistan</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <i className="ri-phone-line text-sky-400"></i>
-                </div>
-                <div>
-                  <p className="text-blue-200">+92 347 2230321</p>
-                  <p className="text-blue-200">+92 344 8879933</p>
+                <div className="text-gray-300">
+                  <p className="font-semibold text-white">Main Branch</p>
+                  <p>I M Collegiate, Karachi</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <i className="ri-mail-line text-sky-400"></i>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-sky-500/10 rounded-lg text-sky-400">
+                  <i className="ri-phone-line text-xl"></i>
                 </div>
-                <span className="text-blue-200">info@imcollegiate.edu.pk</span>
+                <div className="text-gray-300">
+                  <p className="font-semibold text-white">Call Us</p>
+                  <p>+92 347 2230321</p>
+                </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 flex items-center justify-center mt-1">
-                  <i className="ri-time-line text-sky-400"></i>
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-sky-500/10 rounded-lg text-sky-400">
+                  <i className="ri-mail-line text-xl"></i>
                 </div>
-                <div>
-                  <p className="text-blue-200">Mon - Th:  4:00 PM-9:30 PM</p>
-                  <p className="text-blue-200">Sat - Sun: 4:00 PM-9:30 PM</p>
+                <div className="text-gray-300">
+                  <p className="font-semibold text-white">Email Us</p>
+                  <p className="break-all">info@imcollegiate.edu.pk</p>
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="border-t border-blue-800 mt-12 pt-8 text-center">
-          <p className="text-blue-200">
-            &copy; 2025 I M Collegiate Coaching Centre. All rights reserved.
+        <div className="border-t border-white/10 mt-20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-sm">
+            &copy; {new Date().getFullYear()} I M Collegiate Coaching Centre. All rights reserved.
           </p>
+          <div className="flex items-center space-x-6 text-sm text-gray-500">
+            <Link href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white transition-colors duration-300">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

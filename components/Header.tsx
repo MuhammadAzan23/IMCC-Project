@@ -31,53 +31,45 @@ const Header = memo(() => {
   const themeColors = useMemo(() => ({
     headerBg: isScrolled
       ? isDarkMode
-        ? 'rgba(17, 24, 39, 0.95)'
-        : 'rgba(255, 255, 255, 0.95)'
+        ? 'rgba(0, 31, 77, 0.85)' // IMCC Navy half-transparent
+        : 'rgba(255, 255, 255, 0.85)'
       : isDarkMode
-        ? 'rgba(17, 24, 39, 1)'
-        : '#001f4d',
+        ? 'transparent'
+        : 'transparent',
     navText: isScrolled
       ? isDarkMode
-        ? 'text-gray-300 hover:text-white'
-        : 'text-gray-700 hover:text-blue-600'
-      : 'text-white hover:text-blue-200',
-    navUnderline: isScrolled
-      ? isDarkMode
-        ? 'bg-white'
-        : 'bg-blue-600'
-      : 'bg-blue-200',
+        ? 'text-gray-100 hover:text-sky-400'
+        : 'text-imcc-navy hover:text-sky-600'
+      : isDarkMode
+        ? 'text-white hover:text-sky-300'
+        : 'text-white hover:text-sky-200',
+    navUnderline: isDarkMode ? 'bg-sky-400' : 'bg-sky-500',
     toggleBg: isScrolled
       ? isDarkMode
-        ? 'bg-gray-700 hover:bg-gray-600'
-        : 'bg-gray-100 hover:bg-gray-200'
-      : isDarkMode
-        ? 'bg-gray-700 hover:bg-gray-600'
-        : 'bg-white/20 hover:bg-white/30',
+        ? 'bg-white/10 hover:bg-white/20'
+        : 'bg-imcc-navy/5 hover:bg-imcc-navy/10'
+      : 'bg-white/20 hover:bg-white/30',
     toggleIcon: isScrolled
       ? isDarkMode
-        ? 'text-gray-300'
-        : 'text-gray-700'
-      : isDarkMode
-        ? 'text-gray-300'
-        : 'text-white',
+        ? 'text-sky-400'
+        : 'text-imcc-navy'
+      : 'text-white',
     registerBtn: isScrolled
       ? isDarkMode
-        ? 'bg-blue-600 hover:bg-blue-700 text-white'
-        : 'bg-blue-600 hover:bg-blue-700 text-white'
+        ? 'bg-sky-500 hover:bg-sky-600 text-white shadow-lg shadow-sky-500/20'
+        : 'bg-imcc-navy hover:bg-blue-900 text-white shadow-lg shadow-blue-900/20'
       : isDarkMode
-        ? 'bg-blue-600 hover:bg-blue-700 text-white'
-        : 'bg-white text-blue-950 hover:bg-blue-50',
+        ? 'bg-sky-500 hover:bg-sky-600 text-white'
+        : 'bg-white text-imcc-navy hover:bg-sky-50 shadow-xl',
     menuToggle: isScrolled
       ? isDarkMode
-        ? 'hover:bg-gray-700 text-gray-300'
-        : 'hover:bg-gray-100 text-gray-700'
-      : isDarkMode
-        ? 'hover:bg-gray-700 text-gray-300'
-        : 'hover:bg-white/20 text-white',
-    mobileBg: isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200',
+        ? 'hover:bg-white/10 text-white'
+        : 'hover:bg-imcc-navy/5 text-imcc-navy'
+      : 'hover:bg-white/20 text-white',
+    mobileBg: isDarkMode ? 'bg-imcc-navy/95 backdrop-blur-xl' : 'bg-white/95 backdrop-blur-xl',
     mobileLink: isDarkMode
-      ? 'text-gray-300 hover:text-white hover:bg-gray-700'
-      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+      ? 'text-gray-100 hover:text-sky-400 hover:bg-white/5'
+      : 'text-imcc-navy hover:text-sky-600 hover:bg-imcc-navy/5'
   }), [isScrolled, isDarkMode]);
 
   // Handle scroll with debounce
@@ -134,9 +126,8 @@ const Header = memo(() => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`flex items-center justify-between transition-all duration-300 ${
-            isScrolled ? 'h-16' : 'h-20'
-          }`}
+          className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'
+            }`}
         >
           {/* Logo */}
           <Link href="/" aria-label="I M Collegiate Coaching Centre Home">
@@ -146,9 +137,8 @@ const Header = memo(() => {
                 alt="I M Collegiate Logo"
                 width={isScrolled ? 40 : 48}
                 height={isScrolled ? 40 : 48}
-                className={`object-contain transition-all duration-300 rounded-full ${
-                  isScrolled ? '' : 'border border-white/30'
-                }`}
+                className={`object-contain transition-all duration-300 rounded-full ${isScrolled ? '' : 'border border-white/30'
+                  }`}
                 onError={(e) => (e.currentTarget.src = '/logo-fallback.png')}
                 priority
               />
@@ -239,11 +229,10 @@ const Header = memo(() => {
               ))}
               <Link
                 href="/registration"
-                className={`block w-full text-center py-3 rounded-lg transition-all duration-300 font-semibold whitespace-nowrap ${
-                  isDarkMode 
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                className={`block w-full text-center py-3 rounded-lg transition-all duration-300 font-semibold whitespace-nowrap ${isDarkMode
+                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
                     : 'bg-blue-950 hover:bg-blue-900 text-white'
-                }`}
+                  }`}
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Register for classes at I M Collegiate"
               >
