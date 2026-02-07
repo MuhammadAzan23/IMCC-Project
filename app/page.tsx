@@ -50,13 +50,13 @@ const Home = memo(() => {
     {
       name: 'Khatima',
       grade: 'Class 11th Computer Science',
-      text: 'The coaching methods are excellent. I improved my physics and mathematics significantly.',
+      text: 'The coaching methods are excellent, and I have significantly improved my physics and mathematics..',
       image:
         'https://readdy.ai/api/search-image?query=Pakistani%20female%20student%20smiling%20confidently%20wearing%20hijab%20with%20books%2C%20clean%20studio%20background%2C%20professional%20portrait%20style&width=100&height=100&seq=student2&orientation=squarish',
     },
     {
-      name: 'Ali Raza',
-      grade: 'Class 10th',
+      name: 'Muhammad Amir',
+      grade: 'Class 12th',
       text: 'Great environment for learning. The teachers explain complex topics in simple ways.',
       image:
         'https://readdy.ai/api/search-image?query=Pakistani%20teenage%20boy%20student%20smiling%20with%20school%20bag%2C%20clean%20studio%20background%2C%20professional%20portrait%20style&width=100&height=100&seq=student3&orientation=squarish',
@@ -213,7 +213,7 @@ const Home = memo(() => {
                   <p className="text-gray-500 dark:text-gray-400">Success Rate</p>
                 </div>
                 <div>
-                  <p className="text-4xl font-bold text-imcc-navy dark:text-white mb-2">5000+</p>
+                  <p className="text-4xl font-bold text-imcc-navy dark:text-white mb-2">15000+</p>
                   <p className="text-gray-500 dark:text-gray-400">Total Alumni</p>
                 </div>
               </div>

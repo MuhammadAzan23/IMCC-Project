@@ -38,43 +38,43 @@ export default function About() {
 
   const teachers = [
     {
-      name: 'Sir Ashraf',
+      name: 'Ashraf Hussain',
       subject: 'Chemistry & Accounting',
-      qualification: 'PhD Chemistry, 15 years experience',
+      qualification: 'M.Com, M.Phil Chemistry, 14 years experience',
       image: "/images/sir_ashraf.jpg"
     },
     {
-      name: 'Sir Arif',
+      name: 'Arif Hussain',
       subject: 'Mathematics  ',
-      qualification: 'M.Phil Electronics Engineering, 8 years experience',
+      qualification: 'BE Electronics Engineering, M.Phil Applied Mathematics 12 years experience',
       image: "/images/sir_arif.JPG"
     },
     {
-      name: 'Sir Aslam',
+      name: 'Aslam Baig',
       subject: 'Urdu & pakistan Studies',
       qualification: 'M.Phil Urdu, 6 years experience',
       image: "/images/sir_aslam.jpg"
     },
     {
-      name: 'Sir Ahtisham',
+      name: 'Ahtisham Ali',
       subject: 'Physics ',
-      qualification: 'M.Phil Physics, 4 years experience',
+      qualification: 'M.Phil Physics, 6 years experience',
       image: "/images/sir_ahtisham.jpg"
     },
     {
-      name: 'Sir Kazim',
+      name: 'Muhammad Kazim ',
       subject: 'Biology',
       qualification: 'BS Pharmacy, 4 years experience',
       image: "/images/sir_kazim.jpg"
     },
     {
-      name: 'Sir Moiz',
+      name: 'Moiz Hussain',
       subject: 'English',
       qualification: 'BS English, 4 years experience',
       image: "/images/sir_moiz.jpg"
     },
     {
-      name: 'Sir Azan',
+      name: 'Muhammad Azan',
       subject: 'Computer Science',
       qualification: 'BS Computer Science, 2 years experience',
       image: "/images/sir_azan.jpg"
