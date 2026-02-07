@@ -22,6 +22,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "IMCC",
   description: "Coaching Center",
+  icons: {
+    icon: "https://static.readdy.ai/image/9cee6152417353324a92f1cb4d6ac32b/db04df6d67b5c209517963537a24bf52.png",
+  },
 };
 
 import Header from "@/components/Header";

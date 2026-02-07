@@ -64,7 +64,7 @@ export default function About() {
     {
       name: 'Muhammad Kazim ',
       subject: 'Biology',
-      qualification: 'BS Pharmacy, 4 years experience',
+      qualification: 'Doctor of Pharmacy, 4 years experience',
       image: "/images/sir_kazim.jpg"
     },
     {
