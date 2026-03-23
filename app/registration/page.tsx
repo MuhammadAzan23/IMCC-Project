@@ -1,8 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
 import { memo } from 'react';
 import RegistrationForm from '@/components/ui/RegistrationForm';
 
@@ -34,10 +32,10 @@ const Registration = memo(() => {
               Admissions Open
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-              Join the <span className="text-sky-400">Elite</span>
+              Student <span className="text-sky-400">Registration</span>
             </h1>
             <p className="text-xl text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
-              Secure your future today. Register now and become a part of Karachi's most prestigious coaching community.
+              Fill the form below to register. Your data will be securely stored and our team will contact you shortly.
             </p>
           </motion.div>
         </div>
@@ -69,4 +67,6 @@ const Registration = memo(() => {
   );
 });
 
-export default Registration;
+Registration.displayName = 'Registration';
+
+export default Registration;
