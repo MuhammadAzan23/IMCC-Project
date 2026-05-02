@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { LayoutShell } from "@/components/LayoutShell";
 
 export default function RootLayout({
   children,
@@ -40,12 +41,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased min-h-screen flex flex-col transition-colors duration-300`}
       >
-        <Header />
-        <main className="flex-grow pt-20">
+        <LayoutShell header={<Header />} footer={<Footer />}>
           {children}
-        </main>
-        <Footer />
+        </LayoutShell>
       </body>
     </html>
   );
 }
+

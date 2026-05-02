@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { memo } from 'react';
+import LetterReveal from '@/components/ui/LetterReveal';
 
 const Classes = memo(() => {
   const classes = [
@@ -63,7 +64,7 @@ const Classes = memo(() => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="section-heading">Choose Your Path</h2>
+            <LetterReveal text="Choose Your Path" className="section-heading" />
             <p className="section-subtext">Select the perfect program for your academic journey</p>
           </motion.div>
 

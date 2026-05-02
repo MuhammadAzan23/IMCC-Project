@@ -2,31 +2,37 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+// Dynamic import to avoid SSR issues with GSAP
+const MasonryGallery = dynamic(() => import('@/components/ui/MasonryGallery'), { ssr: false });
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [filter, setFilter] = useState('all');
 
   const images = [
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20studying%20in%20modern%20classroom%20with%20teacher%20explaining%20on%20whiteboard%2C%20bright%20educational%20environment%2C%20students%20taking%20notes&width=600&height=400&seq=gallery1&orientation=landscape', alt: 'Classroom Session', category: 'classroom' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20taking%20exam%20in%20examination%20hall%2C%20focused%20study%20environment%2C%20students%20writing%20on%20answer%20sheets&width=600&height=400&seq=gallery3&orientation=landscape', alt: 'Examination Hall', category: 'exams' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20celebrating%20academic%20success%2C%20holding%20certificates%20and%20awards%2C%20happy%20graduation%20ceremony&width=600&height=400&seq=gallery4&orientation=landscape', alt: 'Achievement Ceremony', category: 'events' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20studying%20mathematics%20on%20whiteboard%2C%20teacher%20explaining%20complex%20equations%2C%20modern%20classroom%20setting&width=600&height=400&seq=gallery5&orientation=landscape', alt: 'Mathematics Class', category: 'classroom' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20working%20on%20physics%20experiments%2C%20modern%20physics%20laboratory%2C%20students%20with%20scientific%20equipment&width=600&height=400&seq=gallery6&orientation=landscape', alt: 'Physics Lab', category: 'laboratory' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20participating%20in%20academic%20competition%2C%20quiz%20contest%2C%20students%20raising%20hands%20to%20answer%20questions&width=600&height=400&seq=gallery7&orientation=landscape', alt: 'Academic Competition', category: 'events' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20in%20library%20studying%20together%2C%20modern%20library%20with%20books%20and%20computers%2C%20collaborative%20learning%20environment&width=600&height=400&seq=gallery8&orientation=landscape', alt: 'Library Study', category: 'classroom' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20taking%20practice%20test%2C%20exam%20preparation%20session%2C%20students%20focused%20on%20answer%20sheets&width=600&height=400&seq=gallery9&orientation=landscape', alt: 'Practice Test', category: 'exams' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20at%20graduation%20ceremony%2C%20wearing%20caps%20and%20gowns%2C%20celebrating%20academic%20achievement&width=600&height=400&seq=gallery10&orientation=landscape', alt: 'Graduation Day', category: 'events' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20in%20chemistry%20lab%20conducting%20experiments%2C%20modern%20laboratory%20equipment%2C%20safety%20measures%20being%20followed&width=600&height=400&seq=gallery11&orientation=landscape', alt: 'Chemistry Lab', category: 'laboratory' },
-    { src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20presenting%20project%20work%2C%20modern%20classroom%20with%20projector%2C%20students%20giving%20presentation&width=600&height=400&seq=gallery12&orientation=landscape', alt: 'Project Presentation', category: 'classroom' },
+    { id: 1, src: '/images/sir_ahtisham.jpg', alt: 'Sir Ahtisham — Faculty', category: 'faculty', height: 350 },
+    { id: 2, src: '/images/sir_arif.JPG', alt: 'Sir Arif — Faculty', category: 'faculty', height: 280 },
+    { id: 3, src: '/images/sir_ashraf.jpg', alt: 'Sir Ashraf — Faculty', category: 'faculty', height: 400 },
+    { id: 4, src: '/images/sir_aslam.jpg', alt: 'Sir Aslam — Faculty', category: 'faculty', height: 450 },
+    { id: 5, src: '/images/sir_azan.jpg', alt: 'Sir Azan — Faculty', category: 'faculty', height: 350 },
+    { id: 6, src: '/images/sir_kazim.jpg', alt: 'Sir Kazim — Faculty', category: 'faculty', height: 300 },
+    { id: 7, src: '/images/sir_moiz.jpg', alt: 'Sir Moiz — Faculty', category: 'faculty', height: 380 },
+    { id: 8, src: '/images/logo.jpg', alt: 'IMCC — Our Identity', category: 'campus', height: 200 },
+    { id: 9, src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20studying%20in%20modern%20classroom%20with%20teacher%20explaining%20on%20whiteboard%2C%20bright%20educational%20environment%2C%20students%20taking%20notes&width=600&height=400&seq=gallery1&orientation=landscape', alt: 'Classroom Session', category: 'classroom', height: 280 },
+    { id: 10, src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20working%20on%20physics%20experiments%2C%20modern%20physics%20laboratory%2C%20students%20with%20scientific%20equipment&width=600&height=400&seq=gallery6&orientation=landscape', alt: 'Physics Lab', category: 'laboratory', height: 320 },
+    { id: 11, src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20celebrating%20academic%20success%2C%20holding%20certificates%20and%20awards%2C%20happy%20graduation%20ceremony&width=600&height=400&seq=gallery4&orientation=landscape', alt: 'Achievement Ceremony', category: 'events', height: 280 },
+    { id: 12, src: 'https://readdy.ai/api/search-image?query=Pakistani%20students%20in%20chemistry%20lab%20conducting%20experiments%2C%20modern%20laboratory%20equipment%2C%20safety%20measures%20being%20followed&width=600&height=400&seq=gallery11&orientation=landscape', alt: 'Chemistry Lab', category: 'laboratory', height: 300 },
   ];
 
   const categories = [
     { id: 'all', name: 'All Photos', icon: 'ri-gallery-line' },
+    { id: 'faculty', name: 'Faculty', icon: 'ri-user-star-line' },
     { id: 'classroom', name: 'Classroom', icon: 'ri-book-open-line' },
-    { id: 'exams', name: 'Examinations', icon: 'ri-file-list-3-line' },
-    { id: 'events', name: 'Events', icon: 'ri-calendar-event-line' },
     { id: 'laboratory', name: 'Laboratory', icon: 'ri-flask-line' },
+    { id: 'events', name: 'Events', icon: 'ri-calendar-event-line' },
+    { id: 'campus', name: 'Campus', icon: 'ri-building-line' },
   ];
 
   const filteredImages = filter === 'all' ? images : images.filter((img) => img.category === filter);
@@ -105,39 +111,18 @@ export default function Gallery() {
             </div>
           </motion.div>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredImages.map((image, index) => (
-                <motion.div
-                  key={image.src}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group cursor-pointer overflow-hidden card-base shadow-card hover:shadow-card-hover"
-                  onClick={() => setSelectedImage(image.src)}
-                >
-                  <div className="h-56 overflow-hidden">
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-imcc-navy/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center rounded-4xl">
-                    <div className="text-white text-center p-6">
-                      <div className="w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-xl mx-auto mb-2">
-                        <i className="ri-zoom-in-line text-xl" />
-                      </div>
-                      <p className="font-semibold text-sm">{image.alt}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
+          {/* Masonry Gallery */}
+          <MasonryGallery
+            items={filteredImages}
+            columns={3}
+            gap={16}
+            animateFrom="bottom"
+            blurToFocus={true}
+            stagger={0.08}
+            scaleOnHover={true}
+            hoverScale={0.96}
+            colorShiftOnHover={true}
+          />
         </div>
       </section>
 

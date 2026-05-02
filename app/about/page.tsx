@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ClipReveal from '@/components/ui/ClipReveal';
 
 export default function About() {
   const values = [
@@ -95,7 +96,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <div className="section-heading-badge">Our Foundations</div>
-            <h2 className="section-heading">The Principles That <span className="text-sky-500">Guide Us</span></h2>
+            <ClipReveal text="The Principles That Guide Us" className="section-heading" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -130,7 +131,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <div className="section-heading-badge">Elite Faculty</div>
-            <h2 className="section-heading">Learn from the <span className="text-sky-500">Best</span></h2>
+            <ClipReveal text="Learn from the Best" className="section-heading" />
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

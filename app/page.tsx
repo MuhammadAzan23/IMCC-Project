@@ -3,7 +3,13 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { memo } from 'react';
-import GlowText from '@/components/ui/GlowText';
+import HeroHeading from '@/components/ui/HeroHeading';
+import SlotWord from '@/components/ui/SlotWord';
+import TypingHeadline from '@/components/ui/TypingHeadline';
+import StatCounter from '@/components/ui/StatCounter';
+import ClipReveal from '@/components/ui/ClipReveal';
+import LetterReveal from '@/components/ui/LetterReveal';
+import ScrollLine from '@/components/ui/ScrollLine';
 import ScrollingText from '@/components/ui/ScrollingText';
 
 const Home = memo(() => {
@@ -41,9 +47,16 @@ const Home = memo(() => {
     },
   ];
 
+  const journeySteps = [
+    { icon: 'ri-user-add-line', title: 'Enroll', description: 'Register and choose your class program.' },
+    { icon: 'ri-presentation-line', title: 'Attend', description: 'Join expert-led classes with focused batches.' },
+    { icon: 'ri-line-chart-line', title: 'Excel', description: 'Track progress with regular tests and feedback.' },
+    { icon: 'ri-graduation-cap-line', title: 'Graduate', description: 'Achieve top board results and move ahead.' },
+  ];
+
   return (
     <>
-      {/* Hero Section */}
+      {/* ═══ 1. HERO SECTION ═══ */}
       <section className="hero-navy min-h-screen">
         <div className="hero-gradient-bg" />
         <motion.div
@@ -58,22 +71,21 @@ const Home = memo(() => {
         />
 
         <div className="relative z-10 container mx-auto px-4 sm:px-6 max-w-5xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="section-heading-badge border border-sky-500/20 mb-6">
               Since 2004 • Karachi, Pakistan
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Welcome to{' '}
-              <span className="text-sky-400">I M Collegiate</span>{' '}
-              Coaching Centre
-            </h1>
+            <HeroHeading text="I M Collegiate Coaching Centre" className="text-white mb-4" />
 
-            <GlowText text="Learn it. Live it. Pass it on." className="mb-10" />
+            <p className="text-xl sm:text-2xl text-blue-100/80 mb-3">
+              Karachi&apos;s Home for{' '}
+              <SlotWord words={['Excellence', 'Merit', 'Success', 'Future']} />
+            </p>
+
+            <div className="mb-10">
+              <TypingHeadline text="Learn it. Live it. Pass it on." className="text-lg sm:text-xl" startDelay={1500} />
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
@@ -86,10 +98,7 @@ const Home = memo(() => {
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/classes"
-                  className="btn-outline inline-flex items-center gap-2"
-                >
+                <Link href="/classes" className="btn-outline inline-flex items-center gap-2">
                   <i className="ri-book-open-line" />
                   View Classes
                 </Link>
@@ -106,7 +115,18 @@ const Home = memo(() => {
         </div>
       </section>
 
-      {/* About Preview */}
+      {/* ═══ 2. STATS SECTION ═══ */}
+      <section className="section-padding bg-white dark:bg-imcc-navy border-b border-gray-100 dark:border-white/5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+            <StatCounter value={2004} label="Year Founded" prefix="Est. " />
+            <StatCounter value={95} suffix="%" label="Success Rate" />
+            <StatCounter value={15000} suffix="+" label="Total Alumni" />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 3. ABOUT PREVIEW ═══ */}
       <section className="section-padding bg-white dark:bg-imcc-navy relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -140,9 +160,10 @@ const Home = memo(() => {
               viewport={{ once: true }}
             >
               <div className="section-heading-badge">Our Legacy</div>
-              <h2 className="section-heading leading-tight">
-                Empowering Minds Since <span className="text-sky-500">2004</span>
-              </h2>
+              <ClipReveal
+                text="Empowering Minds Since 2004"
+                className="text-4xl sm:text-5xl font-bold mb-6 text-imcc-navy dark:text-white"
+              />
               <div className="space-y-5 text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-10">
                 <p>
                   I M Collegiate Coaching Centre stands as a beacon of academic excellence in Karachi. For two decades, we've nurtured thousands of students, guiding them through the critical years of Class 9th to 12th.
@@ -172,7 +193,7 @@ const Home = memo(() => {
         </div>
       </section>
 
-      {/* Classes Section */}
+      {/* ═══ 4. CLASSES SECTION ═══ */}
       <section className="section-padding bg-imcc-surface dark:bg-imcc-navy/50 relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -183,7 +204,10 @@ const Home = memo(() => {
             className="text-center mb-16"
           >
             <div className="section-heading-badge">Our Programs</div>
-            <h2 className="section-heading">Specialized Coaching Programs</h2>
+            <LetterReveal
+              text="Specialized Coaching Programs"
+              className="text-4xl sm:text-5xl font-bold mb-6 text-imcc-navy dark:text-white"
+            />
             <p className="section-subtext">Tailored academic paths designed to help you excel in board examinations and beyond.</p>
           </motion.div>
 
@@ -231,7 +255,7 @@ const Home = memo(() => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* ═══ 5. YOUR JOURNEY SECTION (NEW) ═══ */}
       <section className="section-padding bg-white dark:bg-imcc-navy relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -241,10 +265,64 @@ const Home = memo(() => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <div className="section-heading-badge">Your Path</div>
+            <LetterReveal
+              text="Your Journey at IMCC"
+              className="text-4xl sm:text-5xl font-bold mb-6 text-imcc-navy dark:text-white"
+            />
+            <p className="section-subtext">From enrollment to graduation — four simple steps to academic excellence.</p>
+          </motion.div>
+
+          <div className="relative max-w-3xl mx-auto">
+            {/* ScrollLine in the center */}
+            <ScrollLine className="absolute inset-0 z-0" />
+
+            <div className="relative z-10 space-y-16">
+              {journeySteps.map((step, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  className={`flex items-center gap-6 ${
+                    index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                  }`}
+                >
+                  <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
+                    <div className="card-base p-6 shadow-card inline-block">
+                      <h3 className="text-lg font-bold text-imcc-navy dark:text-white mb-2">{step.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">{step.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="w-14 h-14 bg-sky-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-sky-500/30 flex-shrink-0 z-10">
+                    <i className={`${step.icon} text-xl`} />
+                  </div>
+
+                  <div className="flex-1" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ 6. FEATURES SECTION ═══ */}
+      <section className="section-padding bg-imcc-surface dark:bg-imcc-navy/50 relative overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <div className="section-heading-badge">Why Choose Us</div>
-            <h2 className="section-heading">
-              The I M Collegiate <span className="text-sky-500">Advantage</span>
-            </h2>
+            <LetterReveal
+              text="The I M Collegiate Advantage"
+              className="text-4xl sm:text-5xl font-bold mb-6 text-imcc-navy dark:text-white"
+            />
             <p className="section-subtext">We combine traditional values with modern methodologies to provide an unmatched learning environment.</p>
           </motion.div>
 
@@ -256,9 +334,9 @@ const Home = memo(() => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="group p-8 rounded-4xl bg-imcc-surface dark:bg-white/5 border border-transparent hover:border-sky-500/20 hover:bg-white dark:hover:bg-white/10 hover:shadow-card-hover transition-all duration-500"
+                className="group p-8 rounded-4xl bg-white dark:bg-white/5 border border-transparent hover:border-sky-500/20 hover:shadow-card-hover transition-all duration-500"
               >
-                <div className="w-14 h-14 bg-white dark:bg-white/10 rounded-2xl shadow-card flex items-center justify-center mb-6 text-sky-500 group-hover:bg-sky-500 group-hover:text-white group-hover:shadow-glow-sky transition-all duration-500">
+                <div className="w-14 h-14 bg-gray-50 dark:bg-white/10 rounded-2xl shadow-card flex items-center justify-center mb-6 text-sky-500 group-hover:bg-sky-500 group-hover:text-white group-hover:shadow-glow-sky transition-all duration-500">
                   <i className={`${feature.icon} text-2xl`} />
                 </div>
                 <h3 className="text-lg font-bold mb-3 text-imcc-navy dark:text-white">{feature.title}</h3>
@@ -269,8 +347,8 @@ const Home = memo(() => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section-padding bg-imcc-surface dark:bg-imcc-navy/50">
+      {/* ═══ 7. TESTIMONIALS ═══ */}
+      <section className="section-padding bg-white dark:bg-imcc-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -311,7 +389,7 @@ const Home = memo(() => {
                     <p className="text-sky-600 dark:text-sky-400 text-sm font-medium">{testimonial.grade}</p>
                   </div>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 italic leading-relaxed">"{testimonial.text}"</p>
+                <p className="text-gray-600 dark:text-gray-300 italic leading-relaxed">&quot;{testimonial.text}&quot;</p>
                 <div className="mt-6 flex gap-1 text-sky-500">
                   {[...Array(5)].map((_, i) => (
                     <i key={i} className="ri-star-fill text-sm" />
@@ -323,7 +401,7 @@ const Home = memo(() => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* ═══ 8. CTA ═══ */}
       <section className="section-padding relative overflow-hidden">
         <div className="absolute inset-0 bg-imcc-navy">
           <div className="absolute top-0 right-0 w-[35rem] h-[35rem] bg-sky-500/10 rounded-full blur-3xl -mr-40 -mt-40" />
@@ -342,7 +420,7 @@ const Home = memo(() => {
               Ready to Secure Your <span className="text-sky-400">Academic Future?</span>
             </h2>
             <p className="text-lg text-blue-100/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Admission for the new session is now open. Join Karachi's premier coaching centre and start your journey towards excellence.
+              Admission for the new session is now open. Join Karachi&apos;s premier coaching centre and start your journey towards excellence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -351,10 +429,7 @@ const Home = memo(() => {
               >
                 Start Registration
               </Link>
-              <Link
-                href="/contact"
-                className="btn-outline"
-              >
+              <Link href="/contact" className="btn-outline">
                 Contact Support
               </Link>
             </div>
